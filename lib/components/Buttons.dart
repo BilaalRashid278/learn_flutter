@@ -11,6 +11,10 @@ class Buttons extends StatefulWidget {
 class _ButtonsActions extends State<Buttons> {
   int counter = 0;
   Color changeColor = Colors.greenAccent;
+  Future<String> hloPromise(int time) {
+    return Future.delayed(Duration(seconds: time), () => "Hello How Are You!");
+  }
+
   sayHello() {
     setState(() {
       switch (counter) {
@@ -40,8 +44,10 @@ class _ButtonsActions extends State<Buttons> {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        GestureDetector(
+        const Text('hello'),
+        InkWell(
             onTap: () {
               print("Gesture.....");
             },
@@ -58,8 +64,10 @@ class _ButtonsActions extends State<Buttons> {
           ),
         ),
         IconButton(
-            onPressed: () {
+            onPressed: () async {
               print("IconButton");
+              final str = await hloPromise(2);
+              print(str);
             },
             icon: const Icon(Icons.person_2))
       ],

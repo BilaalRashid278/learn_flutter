@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
         // ignore: avoid_unnecessary_containers
         home: Scaffold(
             appBar: AppBar(
+                backgroundColor: Colors.amber.shade200,
                 title: InkWell(onTap: () {}, child: const Text('My App'))),
             body: const Buttons.Buttons()));
   }
