@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 
 class LearnContainer extends StatelessWidget {
   const LearnContainer({super.key});
-  Widget multiContainer() {
+  Widget multiContainer(int name) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 20),
+      margin: const EdgeInsets.only(right: 20),
       padding: const EdgeInsets.all(1.0),
       decoration: BoxDecoration(
         color: Colors.amber.shade700,
@@ -31,9 +31,9 @@ class LearnContainer extends StatelessWidget {
       width: 200,
       height: 200,
       // color: Colors.blueAccent,
-      child: const Text(
-        "Container",
-        style: TextStyle(
+      child: Text(
+        "Container $name",
+        style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w800,
             color: Color.fromARGB(255, 13, 75, 145)),
@@ -46,17 +46,17 @@ class LearnContainer extends StatelessWidget {
     return GestureDetector(
       child: SingleChildScrollView(
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-        scrollDirection: Axis.vertical,
-        child: Column(
+        scrollDirection: Axis.horizontal,
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            multiContainer(),
-            multiContainer(),
-            multiContainer(),
-            multiContainer(),
-            multiContainer(),
-            multiContainer(),
-            multiContainer(),
+            multiContainer(1),
+            multiContainer(2),
+            multiContainer(3),
+            multiContainer(4),
+            multiContainer(5),
+            multiContainer(6),
+            multiContainer(7),
             // ignore: sized_box_for_whitespace
             Container(
               width: 200,
