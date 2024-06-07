@@ -1,32 +1,57 @@
-// ignore_for_file: non_constant_identifier_names, library_prefixes, avoid_print
-
 import 'package:flutter/material.dart';
-import './components/Containers.dart' as Containers;
-// import './components/Buttons.dart' as Buttons;
-// import 'package:http/http.dart' as http;
-import './components/ListView.dart';
-// import 'd'
+import 'package:http/http.dart' as http;
 
+// import './components/Expanded.dart' as Expanded;
+// import './components/Calculator.dart';
+import './components/ConstraintBoxWidget.dart';
+
+const baseUrl = "jsonplaceholder.typicode.com";
 void main() {
-  runApp(const MyApp());
+  runApp(FlutterApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  // This widget is the root of your application.
+Future getData() async {
+  print('runnig....');
+  Uri url = Uri.https(baseUrl, "/comments");
+  print(url);
+  try {
+    final res = await http.get(url);
+    print(res.body);
+  } catch (e) {
+    print("Error msldfk");
+  }
+}
+
+class FlutterApp extends StatelessWidget {
+  FlutterApp({super.key});
+  List<String> forLoop = [
+    "Bilal",
+    "Abdullah",
+    "Anas",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter App',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        // ignore: avoid_unnecessary_containers
-        home: Scaffold(
-            appBar: AppBar(
-                backgroundColor: Colors.amber.shade200,
-                title: InkWell(onTap: () {}, child: const Text('My App'))),
-            body: const ListViewWidget()));
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
+      home: Scaffold(
+        appBar: AppBar(title: const Text('App')),
+        // body: Row(children: [
+        //   for (String name in forLoop)
+        //     Padding(
+        //       padding: const EdgeInsets.only(left: 5, right: 5),
+        //       child: ElevatedButton(
+        //           onPressed: () {
+        //             getData();
+        //           },
+        //           child: Text(name)),
+        //     )
+        // ]),
+        body: ConsBox(),
+      ),
+    );
   }
 }
